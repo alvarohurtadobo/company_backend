@@ -1,0 +1,42 @@
+[
+  {
+    "model": "user.role",
+    "pk": 6,
+    "fields": {
+      "name": "Administrador",
+      "created_at": "2022-11-22T01:09:32Z"
+    }
+  },
+  {
+    "model": "user.role",
+    "pk": 2,
+    "fields": {
+      "name": "Coordinador",
+      "created_at": "2022-11-22T01:09:32Z"
+    }
+  },
+  {
+    "model": "user.role",
+    "pk": 3,
+    "fields": {
+      "name": "Encargado de almacen",
+      "created_at": "2022-11-22T01:09:32Z"
+    }
+  },
+  {
+    "model": "user.role",
+    "pk": 4,
+    "fields": {
+      "name": "Monta Carga",
+      "created_at": "2022-11-22T01:09:32Z"
+    }
+  },
+  {
+    "model": "user.role",
+    "pk": 5,
+    "fields": {
+      "name": "Invitado",
+      "created_at": "2022-11-22T01:09:32Z"
+    }
+  }
+]

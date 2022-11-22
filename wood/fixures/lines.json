@@ -1,0 +1,68 @@
+[
+  {
+    "model": "wood.line",
+    "pk": 1,
+    "fields": {
+      "name": "ELEMENTO DE FIJACIÓN",
+      "created_at": "2022-11-22T01:09:32Z"
+    }
+  },
+  {
+    "model": "wood.line",
+    "pk": 2,
+    "fields": { "name": "BLOQUE", "created_at": "2022-11-22T01:09:32Z" }
+  },
+  {
+    "model": "wood.line",
+    "pk": 3,
+    "fields": { "name": "CUARTONES", "created_at": "2022-11-22T01:09:32Z" }
+  },
+  {
+    "model": "wood.line",
+    "pk": 4,
+    "fields": { "name": "TROZA", "created_at": "2022-11-22T01:09:32Z" }
+  },
+  {
+    "model": "wood.line",
+    "pk": 5,
+    "fields": { "name": "ESTIBAS", "created_at": "2022-11-22T01:09:32Z" }
+  },
+  {
+    "model": "wood.line",
+    "pk": 6,
+    "fields": { "name": "ESTIBAS USADAS", "created_at": "2022-11-22T01:09:32Z" }
+  },
+  {
+    "model": "wood.line",
+    "pk": 7,
+    "fields": { "name": "REPISAS", "created_at": "2022-11-22T01:09:32Z" }
+  },
+  {
+    "model": "wood.line",
+    "pk": 8,
+    "fields": { "name": "TABLAS", "created_at": "2022-11-22T01:09:32Z" }
+  },
+  {
+    "model": "wood.line",
+    "pk": 9,
+    "fields": { "name": "TACOS", "created_at": "2022-11-22T01:09:32Z" }
+  },
+  {
+    "model": "wood.line",
+    "pk": 10,
+    "fields": { "name": "HUACAL", "created_at": "2022-11-22T01:09:32Z" }
+  },
+  {
+    "model": "wood.line",
+    "pk": 11,
+    "fields": { "name": "MARCOS", "created_at": "2022-11-22T01:09:32Z" }
+  },
+  {
+    "model": "wood.line",
+    "pk": 12,
+    "fields": {
+      "name": "PRODUCTOS POR REPARACION",
+      "created_at": "2022-11-22T01:09:32Z"
+    }
+  }
+]

@@ -1,0 +1,5 @@
+[
+  { "model": "wood.wood_state", "pk": 1, "fields": { "name": "Bueno" } },
+  { "model": "wood.wood_state", "pk": 2, "fields": { "name": "Hongos" } },
+  { "model": "wood.wood_state", "pk": 3, "fields": { "name": "Torcido" } }
+]

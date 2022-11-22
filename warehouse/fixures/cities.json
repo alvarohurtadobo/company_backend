@@ -1,0 +1,22 @@
+[
+  {
+    "model": "warehouse.city",
+    "pk": 1,
+    "fields": { "name": "Bogotá", "code": "BO1", "country": "Colombia" }
+  },
+  {
+    "model": "warehouse.city",
+    "pk": 2,
+    "fields": { "name": "Medellín", "code": "M01", "country": "Colombia" }
+  },
+  {
+    "model": "warehouse.city",
+    "pk": 3,
+    "fields": { "name": "Pereira", "code": "P01", "country": "Colombia" }
+  },
+  {
+    "model": "warehouse.city",
+    "pk": 4,
+    "fields": { "name": "Tunja", "code": "T01", "country": "Colombia" }
+  }
+]

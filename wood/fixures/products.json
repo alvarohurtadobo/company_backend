@@ -1,0 +1,45 @@
+[
+  {
+    "model": "wood.product",
+    "pk": 1,
+    "fields": {
+      "name": "RAPA 1 1/2",
+      "code": "INEF8001",
+      "inventory_type_id": 1,
+      "line_id": 3,
+      "is_wood": false,
+      "created_at": "2022-11-22T01:09:32Z",
+      "updated_at": "2022-11-22T01:09:32Z"
+    }
+  },
+  {
+    "model": "wood.product",
+    "pk": 2,
+    "fields": {
+      "name": "GRAPA 1 3/4",
+      "code": "INEF8002",
+      "inventory_type_id": 2,
+      "line_id": 2,
+      "is_wood": false,
+      "created_at": "2022-11-22T01:09:32Z",
+      "updated_at": "2022-11-22T01:09:32Z"
+    }
+  },
+  {
+    "model": "wood.product",
+    "pk": 3,
+    "fields": {
+      "name": "ESTIBA 79X101 CON NIMF 15",
+      "code": "PTET145417",
+      "inventory_type_id": 3,
+      "line_id": 8,
+      "is_wood": true,
+      "length": 101,
+      "width": 79,
+      "height": 12,
+      "species":"Pino",
+      "created_at": "2022-11-22T01:09:32Z",
+      "updated_at": "2022-11-22T01:09:32Z"
+    }
+  }
+]

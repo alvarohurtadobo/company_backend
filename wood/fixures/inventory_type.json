@@ -1,0 +1,6 @@
+[
+    { "model": "wood.inventory_type", "pk": 1, "fields": { "name": "Insumos" } },
+    { "model": "wood.inventory_type", "pk": 2, "fields": { "name": "Materia Prima" } },
+    { "model": "wood.inventory_type", "pk": 3, "fields": { "name": "Producto Terminado" } }
+  ]
+  
