@@ -1,0 +1,23 @@
+[
+    {
+      "model": "warehouse.location",
+      "pk": 1,
+      "fields": { "name": "B001", "warehouse_id": 1}
+    },
+    {
+      "model": "warehouse.location",
+      "pk": 2,
+      "fields": { "name": "B002", "warehouse_id": 1 }
+    },
+    {
+      "model": "warehouse.location",
+      "pk": 3,
+      "fields": { "name": "B003", "warehouse_id": 1 }
+    },
+    {
+      "model": "warehouse.location",
+      "pk": 4,
+      "fields": { "name": "M010", "warehouse_id": 2 }
+    }
+  ]
+  

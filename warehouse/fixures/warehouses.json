@@ -1,0 +1,23 @@
+[
+    {
+      "model": "warehouse.warehouse",
+      "pk": 1,
+      "fields": { "name": "Principal Bogotá", "code": "M1", "map_url": "", "city_id": 1 }
+    },
+    {
+      "model": "warehouse.warehouse",
+      "pk": 2,
+      "fields": { "name": "Principal Medellín", "code": "M1", "map_url": "", "city_id": 2 }
+    },
+    {
+      "model": "warehouse.warehouse",
+      "pk": 3,
+      "fields": { "name": "Principal Pereira", "code": "M1", "map_url": "", "city_id": 3 }
+    },
+    {
+      "model": "warehouse.warehouse",
+      "pk": 4,
+      "fields": { "name": "Principal Tunja", "code": "M1", "map_url": "", "city_id": 4 }
+    }
+  ]
+  
