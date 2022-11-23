@@ -17,7 +17,7 @@ class City(models.Model):
 class Warehouse(models.Model):
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=36)
-    map_url = models.CharField(max_length=512, null=True)
+    map_url = models.ImageField(upload_to="maps", default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPIHJQ_j5byp-SD9Is88D6h-a72knRe_YS4Q&usqp=CAU")
     city_id = models.ForeignKey(City, on_delete=models.RESTRICT)
 
     class Meta:

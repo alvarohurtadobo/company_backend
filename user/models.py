@@ -25,7 +25,7 @@ class User(models.Model):
     password = models.CharField(max_length=256)
     first_name = models.CharField(max_length=256)
     last_name = models.CharField(max_length=256)
-    photo_url = models.CharField(max_length=256, null=True)
+    photo_url = models.ImageField(upload_to="profiles", default="http://cdn.onlinewebfonts.com/svg/img_569206.png")
     document = models.CharField(max_length=20)
     charge = models.CharField(max_length=20, null=True)
     city_id = models.ForeignKey(City, on_delete=models.RESTRICT)
