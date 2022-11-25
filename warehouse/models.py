@@ -29,7 +29,7 @@ class Warehouse(models.Model):
 
 class Location(models.Model):
     name = models.CharField(max_length=100)
-    warehouse_id = models.ForeignKey(City, on_delete=models.RESTRICT)
+    warehouse_id = models.ForeignKey(Warehouse, on_delete=models.RESTRICT)
 
     class Meta:
         verbose_name = 'Ubicación'

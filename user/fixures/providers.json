@@ -1,0 +1,35 @@
+[
+  {
+    "model": "user.provider",
+    "pk": 1,
+    "fields": {
+      "first_name": "Ing Rodrigo",
+      "last_name": "Rodriguez",
+      "city_id": 1,
+      "nit": "727272",
+      "created_at": "2022-11-22T01:09:32Z"
+    }
+  },
+  {
+    "model": "user.provider",
+    "pk": 2,
+    "fields": {
+      "first_name": "Importadora",
+      "last_name": "4ta pared",
+      "city_id": 2,
+      "nit": "727872",
+      "created_at": "2022-11-22T01:09:32Z"
+    }
+  },
+  {
+    "model": "user.provider",
+    "pk": 3,
+    "fields": {
+      "first_name": "Tatiana",
+      "last_name": "Maldonado",
+      "city_id": 2,
+      "nit": "787272",
+      "created_at": "2022-11-22T01:09:32Z"
+    }
+  }
+]

@@ -43,7 +43,7 @@ class Product (models.Model):
 
     is_wood = models.BooleanField(default=False)
     length = models.DecimalField(null=True, decimal_places=2, max_digits=8)
-    width = models.DecimalField(null=True, decimal_places=2, max_digits=8)
+    width = models.DecimalField(null=True, decimal_places=2, max_digits=8) # TODO, en siguiente migración volver obligatorios con defecto 0
     height = models.DecimalField(null=True, decimal_places=2, max_digits=8)
     species = models.CharField(max_length=256, null=True)
 
@@ -64,7 +64,7 @@ class Kit (models.Model):
     #Location
     location_id = models.ForeignKey(Location, related_name="current", on_delete=models.PROTECT)
     destiny_location_id = models.ForeignKey(Location, related_name="destiny", on_delete=models.SET_NULL, null=True)
-    original_location_id = models.ForeignKey(Location, related_name="original", on_delete=models.PROTECT)
+    original_location_id = models.ForeignKey(Location, related_name="original", on_delete=models.PROTECT, null=True)
     #Users # toas ondelte:
     external_provider_id = models.ForeignKey(Provider, on_delete=models.SET_NULL, null=True)
     employee_id = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True)

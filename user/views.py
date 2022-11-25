@@ -27,7 +27,7 @@ class RoleView(viewsets.ModelViewSet):
 def role_list(request, format=None):
     if request.method == 'GET':
         roles = models.Role.objects.all()
-        serializer = serializers.RoleSerializer(roles, many=True)
+        serializer = serializers.RoleSerializer(roles, many = True)
         return Response({"roles":serializer.data})  # Para listas , safe= False
 
 
@@ -36,6 +36,20 @@ def role_list(request, format=None):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+@api_view(["GET"])
+def listEmployees(request):
+    if request.method=='GET':
+        employees = models.Employee.objects.all()
+        serializer = serializers.EmployeeSerializer(employees, many = True)
+        return Response({"employees":serializer.data})
+    
+@api_view(["GET"])
+def listProviders(request):
+    if request.method=='GET':
+        providers = models.Provider.objects.all()
+        serializer = serializers.ProviderSerializer(providers, many = True)
+        return Response({"providers":serializer.data})
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def role_update(request, role_id, format=None):
@@ -53,7 +67,6 @@ def role_update(request, role_id, format=None):
             return Response(serializer.data)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        return Response({"role":serializer.data})
     if request.method=="DELETE":
         role.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

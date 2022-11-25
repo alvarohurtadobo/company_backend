@@ -21,3 +21,8 @@ class WoodStateSerializer (serializers.ModelSerializer):
     class Meta:
         model = models.Wood_State
         fields = ["id", "name"]
+
+class KitSerializer (serializers.ModelSerializer):
+    class Meta:
+        model = models.Kit
+        fields = '__all__'
