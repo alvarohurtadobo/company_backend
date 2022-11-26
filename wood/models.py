@@ -78,7 +78,7 @@ class Kit (models.Model):
         verbose_name_plural = "Kits"
 
     def __str__(self):
-        return "Id: "+self.pk
+        return f"Id: {self.pk}"
     
 class Product_City (models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.PROTECT)

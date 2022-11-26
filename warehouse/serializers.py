@@ -23,6 +23,8 @@ class LocationSerializer(serializers.ModelSerializer):
         for key, val in warehouse.items():
             if key=="id":
                 data.update({"warehouse_id": val})
+            if key=="name":
+                data.update({"warehouse_name": val})
             if key=="city_id":
                 data.update({"city_id": val})
         return data
