@@ -25,11 +25,11 @@ class User(models.Model):
     password = models.CharField(max_length=256, verbose_name="Contraseña")
     first_name = models.CharField(max_length=256, verbose_name="Nombres")
     last_name = models.CharField(max_length=256, verbose_name="Apellidos")
-    photo_url = models.ImageField(upload_to="media/profiles/", default="", verbose_name="Foto de perfil")
+    photo_url = models.ImageField(upload_to="media/profiles/", default="media/profiles/default.png", verbose_name="Foto de perfil")
     document = models.CharField(max_length=20, verbose_name="Documento", blank=True)
     city_id = models.ForeignKey(City, on_delete=models.RESTRICT, verbose_name="Ciudad")
     role_id = models.ForeignKey(Role, on_delete=models.RESTRICT, verbose_name="Rol")
-    active = models.BooleanField(verbose_name="¿Activo?")
+    active = models.BooleanField(verbose_name="¿Activo?", default=True)
     created_at = models.DateTimeField("Created datetime", auto_now_add=True)
     updated_at = models.DateTimeField("Created datetime", auto_now_add=True)
 
