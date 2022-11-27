@@ -8,4 +8,5 @@ urlpatterns = [
     path("kit", views.listOrCreateKit, name="list_create"),
     # path("search_kits/<int:product_id>/<int:wood_state_id>/<int:location_id>", views.listOrCreateKit, name="list_create"),
     path("search_kits", views.searchKits, name="search"),
+    path("products_by_city/<int:city_id>", views.list_products_by_city, name="list_products_by_city")
 ]

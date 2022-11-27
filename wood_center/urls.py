@@ -25,6 +25,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v1/user/", include("user.urls")),
     path("api/v1/wood/", include("wood.urls")),
+    path("api/v1/warehouse/", include("warehouse.urls")),
     # path("api/v1", views.RoleView.as_view({'get':'list'}), name="api"),
     # path("api/v2", views.role_list),
     # path("api/v2/<int:role_id>", views.role_update),

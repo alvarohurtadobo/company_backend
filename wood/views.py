@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from rest_framework.decorators import api_view
 from rest_framework import status
@@ -6,9 +6,15 @@ from rest_framework.response import Response
 
 from .models import Product, Wood_State, Kit, Line
 from .serializers import ExtendedKitSerializer, ProductSerializer, WoodStateSerializer, KitSerializer, LineSerializer
-from warehouse.models import Location
+from warehouse.models import Location, City
 from warehouse.serializers import LocationSerializer
 
+@api_view(['GET'])
+def list_products_by_city(request, city_id):
+    city = get_object_or_404(City, pk=city_id)
+    products = city.products.all()
+    product_serializer = ProductSerializer(products, many=True)
+    return Response({"products":product_serializer.data})
 
 @api_view(['GET'])
 def get_settings(request, format=None):

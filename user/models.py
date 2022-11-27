@@ -12,8 +12,8 @@ class Role(models.Model):
     created_at = models.DateTimeField("Created datetime", auto_now_add=True)
 
     class Meta:
-        verbose_name = 'Role'
-        verbose_name_plural = 'Roles'
+        verbose_name = '1.2 Role'
+        verbose_name_plural = '1.2 Roles'
 
     def __str__(self):
         return self.name
@@ -21,22 +21,22 @@ class Role(models.Model):
 
 class User(models.Model):
     # id 
-    email = models.CharField(max_length=80)
-    password = models.CharField(max_length=256)
-    first_name = models.CharField(max_length=256)
-    last_name = models.CharField(max_length=256)
-    photo_url = models.ImageField(upload_to="profiles", default="http://cdn.onlinewebfonts.com/svg/img_569206.png")
-    document = models.CharField(max_length=20)
-    charge = models.CharField(max_length=20, null=True)
-    city_id = models.ForeignKey(City, on_delete=models.RESTRICT)
-    role_id = models.ForeignKey(Role, on_delete=models.RESTRICT)
-    active = models.BooleanField()
+    email = models.CharField(max_length=80, verbose_name="Correo electrónico")
+    password = models.CharField(max_length=256, verbose_name="Contraseña")
+    first_name = models.CharField(max_length=256, verbose_name="Nombres")
+    last_name = models.CharField(max_length=256, verbose_name="Apellidos")
+    photo_url = models.ImageField(upload_to="profiles", default="http://cdn.onlinewebfonts.com/svg/img_569206.png", verbose_name="Foto de perfil")
+    document = models.CharField(max_length=20, verbose_name="Documento")
+    # charge = models.CharField(max_length=20, null=True) # TODO Borrar
+    city_id = models.ForeignKey(City, on_delete=models.RESTRICT, verbose_name="Ciudad")
+    role_id = models.ForeignKey(Role, on_delete=models.RESTRICT, verbose_name="Rol")
+    active = models.BooleanField(verbose_name="¿Activo?")
     created_at = models.DateTimeField("Created datetime", auto_now_add=True)
     updated_at = models.DateTimeField("Created datetime", auto_now_add=True)
 
     class Meta:
-        verbose_name = 'Usuario'
-        verbose_name_plural = 'Usuarios'
+        verbose_name = '1.1 Usuario'
+        verbose_name_plural = '1.1 Usuarios'
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
@@ -45,31 +45,31 @@ class User(models.Model):
         return self.created_at >= timezone.now() - datetime.timedelta(days=1)
 
 class Employee(models.Model):
-    first_name = models.CharField(max_length=256)
-    last_name = models.CharField(max_length=256)
-    city_id = models.ForeignKey(City, on_delete=models.RESTRICT)
-    nit = models.CharField(max_length=256)
+    first_name = models.CharField(max_length=256, verbose_name="Nombres")
+    last_name = models.CharField(max_length=256, verbose_name="Apellidos")
+    city_id = models.ForeignKey(City, on_delete=models.RESTRICT, verbose_name="Ciudad")
+    nit = models.CharField(max_length=256, verbose_name="NIT")
 
     created_at = models.DateTimeField("Created datetime", auto_now_add=True)
 
     class Meta:
-        verbose_name = 'Empleado'
-        verbose_name_plural = 'Empleados'
+        verbose_name = '1.3 Empleado'
+        verbose_name_plural = '1.3 Empleados'
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
 class Provider(models.Model):
-    first_name = models.CharField(max_length=256)
-    last_name = models.CharField(max_length=256)
-    city_id = models.ForeignKey(City, on_delete=models.RESTRICT)
-    nit = models.CharField(max_length=256)
+    first_name = models.CharField(max_length=256, verbose_name="Nombres")
+    last_name = models.CharField(max_length=256, verbose_name="Apellidos")
+    city_id = models.ForeignKey(City, on_delete=models.RESTRICT, verbose_name="Ciudad")
+    nit = models.CharField(max_length=256, verbose_name="NIT")
 
     created_at = models.DateTimeField("Created datetime", auto_now_add=True)
 
     class Meta:
-        verbose_name = 'Proveedor'
-        verbose_name_plural = 'Proveedores'
+        verbose_name = '1.4 Proveedor'
+        verbose_name_plural = '1.4 Proveedores'
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
