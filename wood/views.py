@@ -5,7 +5,7 @@ from rest_framework import status
 from rest_framework.response import Response
 
 from .models import Product, Wood_State, Kit, Line
-from .serializers import ExtendedKitSerializer, ProductSerializer, WoodStateSerializer, KitSerializer, LineSerializer
+from .serializers import ExtendedKitSerializer, UltimateKitSerializer, ProductSerializer, WoodStateSerializer, KitSerializer, LineSerializer
 from warehouse.models import Location, City
 from warehouse.serializers import LocationSerializer
 
@@ -97,9 +97,15 @@ def searchKits(request, format=None):
     if "height_max" in request.data:
         height_max = request.data["height_max"]
         kits = kits.filter(product_id__height__lte=height_max)  
-    
+    kits = kits.order_by("-created_at")
     kit_serializer = ExtendedKitSerializer(kits, many=True)
     return Response({"kits":kit_serializer.data})
+
+@api_view(["GET"])
+def read_kit_expanded(request, kit_id):
+    kit = get_object_or_404(Kit, pk=kit_id)
+    kit_serializer = UltimateKitSerializer(kit, many=False);
+    return Response({"kit":kit_serializer.data})
 
 @api_view(['GET','PUT', 'DELETE'])
 def readUpdateOrDelete(request, kit_id, format=None):

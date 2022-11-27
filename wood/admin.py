@@ -15,7 +15,7 @@ class KitAdmin(admin.ModelAdmin):
 
 class ProductAdmin(admin.ModelAdmin):
     fields = ["code", "name", "inventory_type_id",
-                "line_id", "is_wood", "length", "width", "height"]
+                "line_id", "is_wood", "length", "width", "height", "species"]
     list_display = ["code", "name", "inventory_type_id", "line_id", "is_wood"]
     list_filter = ["created_at"]
     search_fields = ["code", "name"]
