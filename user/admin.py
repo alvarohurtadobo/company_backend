@@ -7,6 +7,7 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ["first_name", "last_name",
                     "email", "city_id", "role_id", "active"]
     search_fields = ["first_name", "last_name"]
+    # readonly_fields = ("id",)
 
 
 class EmployeeAdmin(admin.ModelAdmin):

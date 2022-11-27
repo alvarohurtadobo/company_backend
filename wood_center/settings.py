@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,6 +30,9 @@ DEBUG = True
 ALLOWED_HOSTS = ['*',"chrome-extension://theIDofYourExtension", "https://1a36-2800-cd0-ad3e-4d00-b07b-d5ea-8665-9af8.sa.ngrok.io"]
 CSRF_TRUSTED_ORIGINS = ["chrome-extension://theIDofYourExtension", "https://1a36-2800-cd0-ad3e-4d00-b07b-d5ea-8665-9af8.sa.ngrok.io"]
 
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 # Application definition
 
 INSTALLED_APPS = [
