@@ -8,7 +8,7 @@ class City(models.Model):
     products = models.ManyToManyField("wood.Product", through='wood.Product_City')
 
     class Meta:
-        verbose_name = '3.1 Ciudad'
+        verbose_name = 'Ciudad'
         verbose_name_plural = '3.1 Ciudades'
 
     def __str__(self):
@@ -21,7 +21,7 @@ class Warehouse(models.Model):
     city_id = models.ForeignKey(City, on_delete=models.RESTRICT, verbose_name="Ciudad")
 
     class Meta:
-        verbose_name = '3.2 Bodega'
+        verbose_name = 'Bodega'
         verbose_name_plural = '3.2 Bodegas'
 
     def __str__(self):
@@ -32,7 +32,7 @@ class Location(models.Model):
     warehouse_id = models.ForeignKey(Warehouse, on_delete=models.RESTRICT, verbose_name="Bodega")
 
     class Meta:
-        verbose_name = '3.3 Ubicación'
+        verbose_name = 'Ubicación'
         verbose_name_plural = '3.3 Ubicaciones'
 
     def __str__(self):

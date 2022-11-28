@@ -7,7 +7,7 @@ class Wood_State (models.Model):
     name = models.CharField(max_length=256, verbose_name="Nombre")
 
     class Meta:
-        verbose_name = "2.5 Estado de madera"
+        verbose_name = "Estado de madera"
         verbose_name_plural = "2.5 Estados de madera"
 
     def __str__(self):
@@ -19,7 +19,7 @@ class Line (models.Model):
     created_at = models.DateTimeField("Fecha de creación", auto_now_add=True)
 
     class Meta:
-        verbose_name = "2.1 Línea"
+        verbose_name = "Línea"
         verbose_name_plural = "2.1 Líneas"
 
     def __str__(self):
@@ -29,7 +29,7 @@ class Inventory_Type (models.Model):
     name = models.CharField(max_length=256, verbose_name="Nombre")
 
     class Meta:
-        verbose_name = "2.4 Tipo de inventario"
+        verbose_name = "Tipo de inventario"
         verbose_name_plural = "2.4 Tipos de inventario"
 
     def __str__(self):
@@ -51,7 +51,7 @@ class Product (models.Model):
     updated_at = models.DateTimeField("Fecha de creación", auto_now_add=True)
 
     class Meta:
-        verbose_name = "2.2 Producto"
+        verbose_name = "Producto"
         verbose_name_plural = "2.2 Productos"
 
     def __str__(self):
@@ -69,12 +69,15 @@ class Kit (models.Model):
     external_provider_id = models.ForeignKey(Provider, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Proveedor externo")
     employee_id = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Empleado")
     updating_user_id = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="Usuario de última actualización")
+    used_at_datetime = models.DateTimeField("Fecha de utilización total", null=True, blank=True)
+    transformed_at_datetime = models.DateTimeField("Fecha de transformación", null=True, blank=True)
+    source_kit_id = models.ForeignKey('self', on_delete= models.SET_NULL, null=True, blank=True, verbose_name="Kit materia prima")
     # Aux
     created_at = models.DateTimeField("Fecha de creación", auto_now_add=True)
     updated_at = models.DateTimeField("Fecha de creación", auto_now_add=True)
 
     class Meta:
-        verbose_name = "2.3 Kit"
+        verbose_name = "Kit"
         verbose_name_plural = "2.3 Kits"
 
     def __str__(self):
@@ -87,7 +90,7 @@ class Product_City (models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.PROTECT, verbose_name="Producto")
     city_id = models.ForeignKey(City, on_delete=models.PROTECT, verbose_name="Ciudad con existencia de producto")
     class Meta:
-        verbose_name = '2.6 Asignación de Producto a ciudad'
+        verbose_name = 'Asignación de Producto a ciudad'
         verbose_name_plural = '2.6 Asignación de Productos a ciudades'
 
     def __str__(self):

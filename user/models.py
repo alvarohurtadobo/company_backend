@@ -12,7 +12,7 @@ class Role(models.Model):
     created_at = models.DateTimeField("Created datetime", auto_now_add=True)
 
     class Meta:
-        verbose_name = '1.2 Role'
+        verbose_name = 'Rol'
         verbose_name_plural = '1.2 Roles'
 
     def __str__(self):
@@ -34,7 +34,7 @@ class User(models.Model):
     updated_at = models.DateTimeField("Created datetime", auto_now_add=True)
 
     class Meta:
-        verbose_name = '1.1 Usuario'
+        verbose_name = 'Usuario'
         verbose_name_plural = '1.1 Usuarios'
 
     def __str__(self):
@@ -52,7 +52,7 @@ class Employee(models.Model):
     created_at = models.DateTimeField("Created datetime", auto_now_add=True)
 
     class Meta:
-        verbose_name = '1.3 Empleado'
+        verbose_name = 'Empleado'
         verbose_name_plural = '1.3 Empleados'
 
     def __str__(self):
@@ -67,7 +67,7 @@ class Provider(models.Model):
     created_at = models.DateTimeField("Created datetime", auto_now_add=True)
 
     class Meta:
-        verbose_name = '1.4 Proveedor'
+        verbose_name = 'Proveedor'
         verbose_name_plural = '1.4 Proveedores'
 
     def __str__(self):
