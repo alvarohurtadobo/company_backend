@@ -2,21 +2,21 @@
   {
     "model": "warehouse.city",
     "pk": 1,
-    "fields": { "name": "Bogotá", "code": "BO1", "country": "Colombia" }
+    "fields": { "name": "Bogotá", "code": "Bog", "country": "Colombia" }
   },
   {
     "model": "warehouse.city",
     "pk": 2,
-    "fields": { "name": "Medellín", "code": "M01", "country": "Colombia" }
+    "fields": { "name": "Medellín", "code": "Med", "country": "Colombia" }
   },
   {
     "model": "warehouse.city",
     "pk": 3,
-    "fields": { "name": "Pereira", "code": "P01", "country": "Colombia" }
+    "fields": { "name": "Pereira", "code": "Per", "country": "Colombia" }
   },
   {
     "model": "warehouse.city",
     "pk": 4,
-    "fields": { "name": "Tunja", "code": "T01", "country": "Colombia" }
+    "fields": { "name": "Tunja", "code": "Tun", "country": "Colombia" }
   }
 ]
