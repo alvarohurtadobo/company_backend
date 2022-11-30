@@ -102,7 +102,7 @@ def searchKits(request, format=None):
     if "height_max" in request.data:
         height_max = request.data["height_max"]
         kits = kits.filter(product_id__height__lte=height_max)
-    kits = kits.order_by("-created_at")
+    kits = kits.order_by("-location_id")
     kit_serializer = ExtendedKitSerializer(kits, many=True)
     return Response({"kits": kit_serializer.data})
 
