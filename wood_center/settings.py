@@ -24,11 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-$c@_u!f0jy4ypa6hvo@y&+h@m(h90ap2)+k1@hfmn#)_4+t4@t"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = ['10.0.2.2','127.0.0.1']
-ALLOWED_HOSTS = ['*',"chrome-extension://theIDofYourExtension", "https://1a36-2800-cd0-ad3e-4d00-b07b-d5ea-8665-9af8.sa.ngrok.io"]
-CSRF_TRUSTED_ORIGINS = ["chrome-extension://theIDofYourExtension", "https://1a36-2800-cd0-ad3e-4d00-b07b-d5ea-8665-9af8.sa.ngrok.io"]
+ALLOWED_HOSTS = ['*',"chrome-extension://theIDofYourExtension", "https://1a36-2800-cd0-ad3e-4d00-b07b-d5ea-8665-9af8.sa.ngrok.io",'localhost','127.0.0.1','190.60.255.83']
+# CSRF_TRUSTED_ORIGINS = ["chrome-extension://theIDofYourExtension", "https://1a36-2800-cd0-ad3e-4d00-b07b-d5ea-8665-9af8.sa.ngrok.io"]
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -128,6 +128,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
