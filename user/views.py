@@ -93,7 +93,7 @@ def login(request):
                 "city": CitySerializer(myCity).data,
                 "cities": CitySerializer(myCities, many=True).data,
                 "lines": LineSerializer(myLines, many=True).data,
-                "token":email})
+                "token": email})
 
 @api_view(['POST'])
 def loginNoPassword(request):

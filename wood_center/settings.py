@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-$c@_u!f0jy4ypa6hvo@y&+h@m(h90ap2)+k1@hfmn#)_4+t4@t"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS = ['10.0.2.2','127.0.0.1']
 ALLOWED_HOSTS = ['*',"chrome-extension://theIDofYourExtension", "https://1a36-2800-cd0-ad3e-4d00-b07b-d5ea-8665-9af8.sa.ngrok.io",'localhost','127.0.0.1','190.60.255.83']
