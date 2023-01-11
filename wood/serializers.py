@@ -3,7 +3,7 @@ from rest_framework import serializers
 from . import models
 from warehouse.models import Location
 from warehouse.serializers import LocationSerializer
-from user.serializers import ProviderSerializer, EmployeeSerializer
+from user.serializers import ProviderSerializer, EmployeeSerializer, UserSerializer
 
 class LineSerializer (serializers.ModelSerializer):
     class Meta:
@@ -33,6 +33,8 @@ class ExtendedKitSerializer(serializers.ModelSerializer):
     product_id = ProductSerializer()
     location_id = LocationSerializer()
     state_id = WoodStateSerializer()
+    updating_user_id = UserSerializer()
+
     class Meta:
         model = models.Kit
         fields = "__all__"
@@ -55,6 +57,16 @@ class ExtendedKitSerializer(serializers.ModelSerializer):
                 data.update({"product_width": val})
             if key=="length":
                 data.update({"product_length": val})
+
+        user = data.pop("updating_user_id")
+        if user is not None:
+            for key, val in user.items():
+                if key=="id":
+                    data.update({"updating_user_id": val})
+                if key=="first_name":
+                    data.update({"updating_user_first_name": val})
+                if key=="last_name":
+                    data.update({"updating_user_last_name": val})
             
         location = data.pop('location_id')
         for key, val in location.items():
@@ -81,6 +93,7 @@ class UltimateKitSerializer(serializers.ModelSerializer):
     state_id = WoodStateSerializer()
     external_provider_id = ProviderSerializer()
     employee_id = EmployeeSerializer()
+    updating_user_id = UserSerializer()
     original_location_id = LocationSerializer()
     class Meta:
         model = models.Kit
@@ -106,6 +119,16 @@ class UltimateKitSerializer(serializers.ModelSerializer):
                     data.update({"employee_first_name": val})
                 if key=="last_name":
                     data.update({"employee_last_name": val})
+
+        user = data.pop("updating_user_id")
+        if user is not None:
+            for key, val in user.items():
+                if key=="id":
+                    data.update({"updating_user_id": val})
+                if key=="first_name":
+                    data.update({"updating_user_first_name": val})
+                if key=="last_name":
+                    data.update({"updating_user_last_name": val})
 
         provider = data.pop('external_provider_id')
         if provider is not None:

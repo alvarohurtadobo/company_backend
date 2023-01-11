@@ -1,16 +1,7 @@
+import csv
 from django.contrib import admin
-
+from django.http import HttpResponse
 from .models import Line, Inventory_Type, Product, Kit, Wood_State, Product_City
-
-
-def download_csv(modeladmin, request, queryset):
-    import csv
-    f = open('some.csv', 'wb')
-    writer = csv.writer(f)
-    writer.writerow(["code", "country", "ip", "url", "count"])
-    for s in queryset:
-        writer.writerow([s.code, s.country, s.ip, s.url, s.count])
-
 
 class KitAdmin(admin.ModelAdmin):
     fields = ["product_id", "location_id", "state_id", "amount", "original_location_id",
@@ -18,10 +9,36 @@ class KitAdmin(admin.ModelAdmin):
               "transformed_at_datetime", "source_kit_id"]  # ,"destiny_location_id"
     readonly_fields = ("created_at",)
     list_display = ["__str__", "product_id", "location_id",
-                    "state_id", "amount", "productor_externo"]
+                    "state_id", "amount", "productor_externo", "source_kit_id", "created_at", "linea"]
     search_fields = ["product_id__name"]
     list_filter = ["created_at", "product_id", "location_id", "state_id"]
-    actions = ['download_csv']
+    actions = ['export_as_csv']
+
+    def linea(self, obj):
+        return getattr(getattr(obj, "product_id"), "line_id")
+
+    def export_as_csv(self, request, queryset):
+        meta = self.model._meta 
+        field_names = [field.name for field in meta.fields]
+        extended_field_names = field_names + ["Línea"]
+
+        response = HttpResponse(content_type="text/csv")
+        response["Content-Disposition"] = 'attachment; filename={}.csv'.format(meta)
+        writer = csv.writer(response)
+        writer.writerow(extended_field_names)
+        print(f"Headers are {extended_field_names}")
+        for obj in queryset:
+            new_row = [getattr(obj, field) for field in field_names]
+            # For line
+            product =  getattr(obj, "product_id")
+            print(f"Exported product {product}")
+            line_name =  getattr(product, "line_id")
+            print(f"Line is {line_name}")
+            new_row = new_row + [line_name]
+            row = writer.writerow(new_row)
+        return response
+
+    export_as_csv.short_description = "Exportar como CSV"
 
 
 class ProductAdmin(admin.ModelAdmin):
