@@ -9,32 +9,49 @@ class KitAdmin(admin.ModelAdmin):
               "transformed_at_datetime", "source_kit_id"]  # ,"destiny_location_id"
     readonly_fields = ("created_at",)
     list_display = ["__str__", "product_id", "location_id",
-                    "state_id", "amount", "productor_externo", "source_kit_id", "created_at", "linea"]
+                    "state_id", "amount", "productor_externo", "source_kit_id", "bodega", "linea", "created_at"]
     search_fields = ["product_id__name"]
     list_filter = ["created_at", "product_id", "location_id", "state_id"]
     actions = ['export_as_csv']
 
     def linea(self, obj):
         return getattr(getattr(obj, "product_id"), "line_id")
+    
+    def bodega(self, obj):
+        return getattr(getattr(obj, "location_id"), "warehouse_id")
 
     def export_as_csv(self, request, queryset):
         meta = self.model._meta 
         field_names = [field.name for field in meta.fields]
-        extended_field_names = field_names + ["Línea"]
+        extended_field_names =  [   "ID",
+                                    "Producto", 
+                                    "Estado",
+                                    "Cantidad",
+                                    "Ubicación",
+                                    "Ubicación destino",
+                                    "Lugar de creación", 
+                                    "Proveedor externo", 
+                                    "Empleado",
+                                    "Usuario que actualiza",
+                                    "Fecha de utilización",
+                                    "Fecha de transformación",
+                                    "Kit fuente",
+                                    "Bodega", 
+                                    "Línea",
+                                    "Fecha de creación"]
 
         response = HttpResponse(content_type="text/csv")
         response["Content-Disposition"] = 'attachment; filename={}.csv'.format(meta)
         writer = csv.writer(response)
         writer.writerow(extended_field_names)
-        print(f"Headers are {extended_field_names}")
         for obj in queryset:
             new_row = [getattr(obj, field) for field in field_names]
             # For line
-            product =  getattr(obj, "product_id")
-            print(f"Exported product {product}")
+            product = getattr(obj, "product_id")
+            location = getattr(obj, "location_id")
             line_name =  getattr(product, "line_id")
-            print(f"Line is {line_name}")
-            new_row = new_row + [line_name]
+            warehouse_name =  getattr(location, "warehouse_id")
+            new_row = new_row[:-2] + [warehouse_name, line_name] + new_row[-2:-1]
             row = writer.writerow(new_row)
         return response
 
