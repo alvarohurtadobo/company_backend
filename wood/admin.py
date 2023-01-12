@@ -1,8 +1,26 @@
 import csv
 from django.contrib import admin
 from django.http import HttpResponse
-from .models import Line, Inventory_Type, Product, Kit, Wood_State, Product_City
+from .models import Line, Inventory_Type, Product, Kit, Wood_State, Product_City, KitFollowup
 
+
+
+class KitFollowupAdmin(admin.ModelAdmin):
+    fields = ["kit_id", "product_id", "location_id", "state_id", "amount", "original_location_id",
+              "employee_id", "external_provider_id", "updating_user_id", "used_at_datetime",
+              "transformed_at_datetime", "source_kit_id"]  # ,"destiny_location_id"
+    readonly_fields = ("created_at",)
+    list_display = ["__str__", "kit_id", "product_id", "location_id",
+                    "state_id", "amount", "productor_externo", "source_kit_id", "bodega", "linea", "created_at"]
+    search_fields = ["product_id__name"]
+    list_filter = ["kit_id", "product_id", "location_id"]
+    actions = []
+
+    def linea(self, obj):
+        return getattr(getattr(obj, "product_id"), "line_id")
+    
+    def bodega(self, obj):
+        return getattr(getattr(obj, "location_id"), "warehouse_id")
 class KitAdmin(admin.ModelAdmin):
     fields = ["product_id", "location_id", "state_id", "amount", "original_location_id",
               "employee_id", "external_provider_id", "updating_user_id", "used_at_datetime",
@@ -77,3 +95,4 @@ admin.site.register(Product, ProductAdmin)
 admin.site.register(Kit, KitAdmin)
 admin.site.register(Wood_State)
 admin.site.register(Product_City, ProductCityAdmin)
+admin.site.register(KitFollowup, KitFollowupAdmin)

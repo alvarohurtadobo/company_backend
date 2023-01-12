@@ -85,6 +85,36 @@ class Kit (models.Model):
     
     def productor_externo(self):
         return self.external_provider_id is not None # or ((self.employee_id is None) and (self.original_location_id is None))
+
+class KitFollowup (models.Model):
+    kit_id = models.ForeignKey(Kit, on_delete=models.PROTECT, verbose_name="Kit fuente")
+    product_id = models.ForeignKey(Product, on_delete=models.PROTECT, verbose_name="Producto")
+    state_id = models.ForeignKey(Wood_State, on_delete=models.PROTECT, verbose_name="Estado")
+    amount = models.IntegerField(default=0, verbose_name="Cantidad")
+    #Location
+    location_id = models.ForeignKey(Location, related_name="followup_current", on_delete=models.PROTECT, verbose_name="Ubicación")
+    destiny_location_id = models.ForeignKey(Location, related_name="followup_destiny", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Ubicación de destino")
+    original_location_id = models.ForeignKey(Location, related_name="followup_original", on_delete=models.PROTECT, null=True, blank=True, verbose_name="Ubicación de origen")
+    #Users # toas ondelte:
+    external_provider_id = models.ForeignKey(Provider, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Proveedor externo")
+    employee_id = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Empleado")
+    updating_user_id = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="Usuario de última actualización")
+    used_at_datetime = models.DateTimeField("Fecha de utilización total", null=True, blank=True)
+    transformed_at_datetime = models.DateTimeField("Fecha de transformación", null=True, blank=True)
+    source_kit_id = models.ForeignKey('self', on_delete= models.SET_NULL, null=True, blank=True, verbose_name="Kit materia prima")
+    # Aux
+    created_at = models.DateTimeField("Fecha de creación", auto_now_add=True)
+    updated_at = models.DateTimeField("Fecha de creación", auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Seguimiento Kit"
+        verbose_name_plural = "2.7 Seguimiento a Kits"
+
+    def __str__(self):
+        return f"Id: {self.pk}"
+    
+    def productor_externo(self):
+        return self.external_provider_id is not None # or ((self.employee_id is None) and (self.original_location_id is None))
     
 class Product_City (models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.PROTECT, verbose_name="Producto")
