@@ -29,6 +29,11 @@ class KitSerializer (serializers.ModelSerializer):
         model = models.Kit
         fields = '__all__'
 
+class KitFollowupSerializer (serializers.ModelSerializer):
+    class Meta:
+        model = models.KitFollowup
+        fields = '__all__'
+
 class ExtendedKitSerializer(serializers.ModelSerializer):
     product_id = ProductSerializer()
     location_id = LocationSerializer()

@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from django.utils import timezone
 
 from .models import Product, Wood_State, Kit, Line
-from .serializers import ExtendedKitSerializer, UltimateKitSerializer, ProductSerializer, WoodStateSerializer, KitSerializer, LineSerializer
+from .serializers import ExtendedKitSerializer, UltimateKitSerializer, ProductSerializer, WoodStateSerializer, KitSerializer, LineSerializer, KitFollowupSerializer
 from warehouse.models import Location, City
 from warehouse.serializers import LocationSerializer
 
@@ -148,9 +148,15 @@ def readUpdateOrDelete(request, kit_id, format=None):
         kit_serializer = KitSerializer(kit)
         return Response({"kit": kit_serializer.data})
     if request.method == 'PUT':
+        print("Update kit")
         kit_serializer = KitSerializer(kit, many=False, data=request.data)
         if kit_serializer.is_valid():
             kit_serializer.save()
+            updated_kit = Kit.objects.get(pk=kit_id)
+            request.data.update({"kit_id": kit_id})
+            kitfollowup_serializer = KitFollowupSerializer(data=request.data)
+            if kitfollowup_serializer.is_valid():
+                kitfollowup_serializer.save()
             return Response(kit_serializer.data)
         else:
             return Response(kit_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
